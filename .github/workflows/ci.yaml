@@ -1,19 +1,20 @@
-name: Mon CI # Nom du workflow (il apparaîtra dans l’onglet "Actions" sur GitHub)
-# Déclenchement automatique du workflow
+name: Mon CI
+
 on:
-push: # L'événement qui déclenche le workflow
-branches: [ main , feature-readme ] # Le workflow s'exécute sur ces deux branches
-# Définition des tâches à exécuter (jobs)
+  push:
+    branches: [main, feature-readme]   # exécute sur push vers ces branches
+ 
+  pull_request:
+    branches: [main, feature-readme]
+
 jobs:
-Construction: # Nom du job (Build)
-runs-on: ubuntu-latest # Système d’exploitation utilisé par GitHub pour exécuter les commandes
-# Liste des étapes (steps) du job
-steps:
-- name: Récupération du code # Étape 1 : récupérer le code source du dépôt
-uses: actions/checkout@v4 # Action officielle de GitHub pour cloner le dépôt
-# Étape 2 : exécuter des commandes pour vérifier le contenu
+  construction:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
 
-
--run: | # Le symbole "|" permet d’écrire plusieurs lignes de commande
-echo "Félicitations, Pipeline CI déclenché avec réussite" # Affiche un message dans la console
-ls -l # Liste les fichiers présents dans le répertoire du dépôt
+      - name: Vérifications
+        run: |
+          echo "✅ Félicitations, Pipeline CI déclenché avec réussite"
+          ls -l
