@@ -12,7 +12,8 @@ steps:
 - name: Récupération du code # Étape 1 : récupérer le code source du dépôt
 uses: actions/checkout@v4 # Action officielle de GitHub pour cloner le dépôt
 # Étape 2 : exécuter des commandes pour vérifier le contenu
-- name: Vérification du contenu
-run: | # Le symbole "|" permet d’écrire plusieurs lignes de commande
+
+
+-run: | # Le symbole "|" permet d’écrire plusieurs lignes de commande
 echo "Félicitations, Pipeline CI déclenché avec réussite" # Affiche un message dans la console
 ls -l # Liste les fichiers présents dans le répertoire du dépôt
